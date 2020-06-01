@@ -39,7 +39,10 @@ function solution_1 (root) {
 // one-liner - basically the above
 var solution_2=(r,i=invertTree)=>r?([r.left,r.right]=[r.right,r.left],i(r.left),i(r.right),r):r
 
-const invertTree = solution_2;
+// thomas luo's one-liner - same idea, but saves a character (i changed his original `z` to `i`)
+var solution_3=(r,i=invertTree)=>r&&([r.left,r.right]=[r.right,r.left],i(r.left)&i(r.right),r)
+
+const invertTree = solution_3;
 
 // const specialTest = (...args) => {
 // };
