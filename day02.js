@@ -34,8 +34,8 @@ function solution_1 (node) {
   node.next = node.next.next;
 }
 
-// one-liner - basically the above
-var solution_2=n=>(N=n.next,n.val=N.val,n.next=N.next)
+// one-liner - basically the above. note that leetcode specifically checks to see that the function isn't returning anything, so i used curly braces
+var solution_2=n=>{N=n.next;n.val=N.val;n.next=N.next}
 
 const deleteNode = solution_2;
 
