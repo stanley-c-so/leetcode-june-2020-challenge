@@ -35,7 +35,10 @@ function solution_1 (people) {
 // alex mok's one-liner
 var solution_2=(p,r=[])=>p.sort(([a,A],[b,B])=>a==b?A-B:b-a).map(e=>r.splice(e[1],0,e))&&r
 
-const reconstructQueue = solution_2;
+// thomas luo's one-liner - same thing, but instead of `a==b` he writes `a-c` (he uses `c` instead of `b`) and he swaps the ternary
+var solution_3=(p,r=[])=>p.sort(([a,b],[c,d])=>a-c?c-a:b-d).map(e=>r.splice(e[1],0,e))&&r
+
+const reconstructQueue = solution_3;
 
 // const specialTest = (...args) => {
 // };
