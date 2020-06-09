@@ -54,6 +54,16 @@ function solution_1 (s, t) {
 // the solution actually returns a boolean instead of 0 or 1, which node would need to succeed, even though leetcode accepts 0 or 1.)
 var solution_2=(s,t,p=(a,b)=>a-s.length?b-t.length?p(a+(s[a]==t[b]),b+1):1:0)=>!p(0,0)
 
+// a normal write up of thomas luo's one-liner
+function solution_3 (s, t) {
+  function helper (pointerS, pointerT) {
+    if (pointerS === s.length) return true;                                 // if `pointerS` is out of bounds, we have matched all of `s`. true
+    if (pointerT === t.length) return false;                                // if `pointerT` is out of bounds, we have exhausted `t`. false
+    return helper(pointerS + (s[pointerS] === t[pointerT]), pointerT + 1);  // else, recurse. increment `pointerS` if match. increment `pointerT`.
+  }
+  return helper(0, 0);                                                      // kick-start helper at 0, 0
+}
+
 const isSubsequence = solution_2;
 
 // const specialTest = (...args) => {
