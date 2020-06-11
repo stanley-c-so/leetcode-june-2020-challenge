@@ -70,7 +70,10 @@ function solution_2 (nums) {
 // one-liner - basically the above
 var solution_3=(n,l=i=0,r=n.length-1)=>{while(i<=r){if(!n[i]){i==l?++i:[n[i],n[l]]=[n[l],n[i]];++l}else if(n[i]==2){[n[i],n[r]]=[n[r],n[i]];--r}else ++i}}
 
-const sortColors = solution_3;
+// one-liner - the two-pass solution above (switching around `a`, `b`, and `c` in the first for loop to save characters)
+var solution_4=(N,a=b=c=0,r='repeat')=>(N.map(n=>n?n-1?++c:++b:++a),N.length=0,N.push(...('0'[r](a)+'1'[r](b)+'2'[r](c)).split('').map(e=>+e)))
+
+const sortColors = solution_4;
 
 const specialTest = (nums, sorted) => {
   sortColors(nums);
