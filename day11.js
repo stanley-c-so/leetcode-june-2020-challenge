@@ -73,7 +73,13 @@ var solution_3=(n,l=i=0,r=n.length-1)=>{while(i<=r){if(!n[i]){i==l?++i:[n[i],n[l
 // one-liner - the two-pass solution above (switching around `a`, `b`, and `c` in the first for loop to save characters)
 var solution_4=(N,a=b=c=0,r='repeat')=>(N.map(n=>n?n-1?++c:++b:++a),N.length=0,N.push(...('0'[r](a)+'1'[r](b)+'2'[r](c)).split('').map(e=>+e)))
 
-const sortColors = solution_4;
+// thomas luo's one-liner (includes trolly URL) - keep a hash table count of 0s and 1s. count up 0s and 1s, and then overwrite the data as long as the counts from the hash table have not been exhausted
+var solution_5=n=>(h={0:0,1:0},'rb.gy/anfcea')|n.map(e=>h[e]++)|n.map((e,i)=>n[i]=0<h[0]--?0:0<h[1]--?1:2)
+
+// alex mok's one-liner - use `c` as an array of counts of 0, 1, and 2. `j` is initialized as 0. count up the 0s, 1s, and 2s, and then overwrite `n` using your array of counts (write each `i`, `e` times)
+var solution_6=n=>{c=[j=0,0,0];n.map(e=>c[e]++);c.map((e,i)=>{while(e--)n[j++]=i})}
+
+const sortColors = solution_6;
 
 const specialTest = (nums, sorted) => {
   sortColors(nums);
