@@ -18,7 +18,7 @@
 
 // ----------
 
-// first, realize that if a group of numbers have the property that every pair (Si, Sj) satisfies either Si % Sj = 0 or Sj % Si = 0, then that
+// first, realize that if a group of numbers has the property that every pair (Si, Sj) satisfies either Si % Sj = 0 or Sj % Si = 0, then that
 // group of numbers, if sorted in increasing order, would also have the property that every number is a multiple of the one directly before it.
 // we first sort `nums` in increasing order, so that for every number we process, all numbers already in our `memo` are guaranteed to be smaller.
 // what we will do is iterate through `nums`, and for each num, we will create a `memo` entry for the largest collection of numbers up to that num
