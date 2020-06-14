@@ -51,11 +51,14 @@ function solution_1 (nums) {
 // one-liner - basically the above
 var solution_2=(N,M={},l='length')=>{N.sort((a,b)=>a-b);for(i=0;i<N[l];++i){n=N[i];m=0;for(j=i-1;j>=0;--j){x=N[j];X=M[x][l];!(n%x)&&X>m?(m=X,M[n]=[...M[x],n]):0}m?0:M[n]=[n]}return Object.values(M).reduce((o,s)=>o[l]>s[l]?o:s,[])}
 
-const largestDivisibleSubset = solution_2;
+// alex mok's one-liner
+var solution_3=n=>{l='length';d=n.sort((a,b)=>a-b).map(e=>[e]);for(i=1;i<n[l];i++)for(j=i-1;j>=0;j--)z=d[j],d[i][l]<=z[l]&&n[i]%z[0]==0?d[i]=[n[i],...z]:0;return n[0]?d.sort((a,b)=>b[l]-a[l])[0]:[]}
+
+const largestDivisibleSubset = solution_3;
 
 const specialTest = (nums, answers) => {
   const equals = require('./_equality-checker')
-  const sortedAnswer = largestDivisibleSubset(nums);
+  const sortedAnswer = largestDivisibleSubset(nums).sort((a, b) => a - b);
   const result = answers.some(e => equals(e, sortedAnswer));
   if (!result) console.log('GOT:', sortedAnswer);
   return result;
