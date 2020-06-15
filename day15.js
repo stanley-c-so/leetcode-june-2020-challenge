@@ -36,7 +36,16 @@ var solution_2=(r,v,R=solution_2)=>r&&r.val!=v?r.val>v?R(r.left,v):R(r.right,v):
 // thomas luo's one-liner - he defines a recursive helper function. note, however, that it does recurse on both left and right (i.e. it is not true binary search)
 var solution_3=(r,v,z=r=>r?r.val-v?z(r.right)||z(r.left):r:null)=>z(r)
 
-const searchBST = solution_3;
+// alex mok's O(log n) one-liner - recursive helper function
+var solution_4=(r,v,z=r=>!r||r.val==v?r:r.val<v?z(r.right):z(r.left))=>z(r)
+
+// alex mok's O(n) one-liner
+var solution_5=(r,v,z=r=>!r||r.val==v?r:z(r.right)||z(r.left))=>z(r)
+
+// my improvement on alex's O(n) one-liner (shaving a character)
+var solution_6=(r,v,z=r=>r&&r.val!=v?z(r.right)||z(r.left):r)=>z(r)
+
+const searchBST = solution_6;
 
 // const specialTest = (...args) => {
 // };
