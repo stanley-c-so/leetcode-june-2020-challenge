@@ -102,7 +102,7 @@ function solution_2 (IP) {
 }
 
 // one-liner - basically the above, with a few self-explanatory tricks thrown in
-var solution_3=(I,[l,s,e,i,a,b,c]=['length','split','every','includes','IPv4','IPv6','Neither'],P=I[i]('.'),C=I[i](':'),A=n=>n[l]&&!(n[l]>1&&n[0]=='0')&&n[s]('')[e](d=>d>='0'&&d<='9')&&+n<256,B=n=>n[l]>=1&&n[l]<=4&&n[s]('')[e](d=>(d=d.toLowerCase())&&(d>='0'&&d<='9'||d>='a'&&d<='f')))=>(P&&(x=I[s]('.'))&&x[l]==4&&x[e](A))?a:(C&&(x=I[s](':'))&&x[l]==8&&x[e](B))?b:c
+var solution_3=(I,[l,s,e,i]=['length','split','every','includes'],P=I[i]('.'),C=I[i](':'),A=n=>n[l]&&!(n[l]>1&&n[0]=='0')&&n[s]('')[e](d=>d>='0'&&d<='9')&&+n<256,B=n=>n[l]>=1&&n[l]<=4&&n[s]('')[e](d=>(d=d.toLowerCase())&&(d>='0'&&d<='9'||d>='a'&&d<='f')))=>(P&&(x=I[s]('.'))&&x[l]==4&&x[e](A))?'IPv4':(C&&(x=I[s](':'))&&x[l]==8&&x[e](B))?'IPv6':'Neither'
 
 const validIPAddress = solution_3;
 
