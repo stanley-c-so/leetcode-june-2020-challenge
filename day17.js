@@ -78,7 +78,7 @@ function solution_1 (board) {
 }
 
 // one-liner - basically the above
-var solution_2=(b,l='length',h=b[l],w=h&&b[0][l],H=(r,c)=>r<0||r==h||c<0||c==w||b[r][c]!=='O'?0:(b[r][c]='V',H(r-1,c),H(r+1,c),H(r,c-1),H(r,c+1)))=>{for(c=0;c<w;++c){H(0,c);H(h-1,c)}for(r=1;r<h-1;++r){H(r,0);H(r,w-1)}for(r=1;r<h-1;++r)for(c=1;c<w-1;++c)if(b[r][c]=='O')b[r][c]='X';for(r=0;r<h;++r)for(c=0;c<w;++c)if(b[r][c]=='V')b[r][c]='O'}
+var solution_2=(b,h=b.length,w=h&&b[0].length,H=(r,c)=>r<0||r==h||c<0||c==w||b[r][c]!=='O'?0:(b[r][c]='V',H(r-1,c),H(r+1,c),H(r,c-1),H(r,c+1)))=>{for(c=0;c<w;++c){H(0,c);H(h-1,c)}for(r=1;r<h-1;++r){H(r,0);H(r,w-1)}for(r=1;r<h-1;++r)for(c=1;c<w-1;++c)if(b[r][c]=='O')b[r][c]='X';for(r=0;r<h;++r)for(c=0;c<w;++c)if(b[r][c]=='V')b[r][c]='O'}
 
 const solve = solution_2;
 
