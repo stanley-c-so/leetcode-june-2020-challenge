@@ -37,7 +37,13 @@ function solution_1 (n, memo) {
 // one-liner - basically the above, but with a recursive helper function. note that `[...Array(n).keys()]` produces an array containing `n` numbers, from 0 to `n - 1`
 var solution_2=(n,m=[1],h=n=>m[n]?m[n]:m[n]=[...Array(n).keys()].reduce((t,i)=>t+=h(i,m)*h(n-1-i,m),0))=>h(n)
 
-const numTrees = solution_2;
+// alex mok's one-liner - similar idea, but using well crafted for loops to do this iteratively
+var solution_3=n=>{m=[1,1];for(i=2;i<=n;i++){m[i]=0;for(j=1;j<=i;)m[i]+=m[j-1]*m[i-j++]}return m[n]}
+
+// my improvement on alex mok's one-liner - starting the memo at `[1]` instead of `[1,1]` (and starting the for loop at `i=1`) to save characters
+var solution_4=n=>{m=[1];for(i=1;i<=n;i++){m[i]=0;for(j=1;j<=i;)m[i]+=m[j-1]*m[i-j++]}return m[n]}
+
+const numTrees = solution_4;
 
 // const specialTest = (...args) => {
 // };
