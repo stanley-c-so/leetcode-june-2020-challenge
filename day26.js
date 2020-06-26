@@ -60,7 +60,10 @@ var solution_2=(r,t=0,h=(r,p='',L=r.left,R=r.right,x=p+r.val)=>L||R?(L?h(L,x):0,
 // thomas luo's one-liner - here, the recursive helper function, `f`, actually returns the total. in all cases, prefix, `d`, tacks on current root value, and only if leaf node, it returns `+d`
 var solution_3=(r,f=(r,d='')=>r?(d+=r.val)&&!r.left&!r.right?+d:f(r.left,d)+f(r.right,d):0)=>f(r)
 
-const sumNumbers = solution_3;
+// my improvement on thomas' one-liner - using `L` and `R` to stand in for `r.left` and `r.right`. must include them as parameters in `f` or else it won't work
+var solution_4=(r,f=(r,d='',L,R)=>r?(L=r.left,R=r.right,d+=r.val,L||R?f(L,d)+f(R,d):+d):0)=>f(r)
+
+const sumNumbers = solution_4;
 
 // const specialTest = (...args) => {
 // };
