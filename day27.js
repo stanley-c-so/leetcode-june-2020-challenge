@@ -41,8 +41,9 @@ function solution_1 (n) {
   return memo[n];
 }
 
-// one-liner - basically the above. note that for step 2, instead of skipping when `i` is already in `memo`, we simply wrap the rest of the loop in a condition if `i` is NOT in `memo`
-var solution_2=n=>{m=[1];for(i=1;i*i<=n;++i)m[i*i]=1;for(i=2;i<=n;++i)if(!m[i]){l=Infinity;for(j=1;i-j*j>0;++j)l=Math.min(l,m[i-j*j]+1);m[i]=l}return m[n]}
+// one-liner - basically the above. note that for step 2, instead of skipping when `i` is already in `memo`, we simply wrap the rest of the loop in a condition if `i` is NOT in `memo`.
+// also, instead of initializing `l` at Infinity, we can choose another number such as `n` - in the end, the number is guaranteed to be no greater than this.
+var solution_2=n=>{m=[1];for(i=1;i*i<=n;++i)m[i*i]=1;for(i=2;i<=n;++i)if(!m[i]){l=n;for(j=1;i-j*j>0;++j)l=Math.min(l,m[i-j*j]+1);m[i]=l}return m[n]}
 
 const numSquares = solution_2;
 
