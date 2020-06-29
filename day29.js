@@ -50,7 +50,10 @@ var solution_2=(m,n,t=b=1)=>{[B,S]=m>n?[m,n]:[n,m];for(i=B;i<=B+S-2;++i)t*=i;for
 
 // thomas luo's one-liner - he fills an array of length `m` with 0 (and then reassigns first element to 1) and then he does the following `n` times: every element in the array (except the first)
 // increases by whatever the previous number is. thus if `m` and `n` are both 5, the array goes from [1,0,0,0,0] -> [1,2,3,4,5] -> [1,3,6,10,15] -> [1,4,10,20,35] -> [1,5,15,35,70] and ultimately
-// the final number, 70, is the answer
+// the final number, 70, is the answer. why does this work? because he's emulating a 2d memo solution. in the grid, there is only 1 way to get to the top left square. for any other position
+// (other than top or left edge), the answer becomes the sum of the number above and to the left (because you get to that position either from above or from the left). what this algorithm is doing,
+// then, is to emulate the filling out of that grid but with only one array: the number already existing in a position stands in for the number "above", and the previous number is the number from
+// the left. by overwriting the array `n` times it is like filling out the `n` rows of the grid.
 var solution_3=(m,n,z=Array(m).fill(0),l='rb.gy/4iyrdu')=>{z[0]=1;while(n--)z.map((_,j)=>z[j]+=j&&z[j-1]);return z[m-1]}
 
 const uniquePaths = solution_3;
