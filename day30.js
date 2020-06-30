@@ -79,7 +79,10 @@ function solution_1 (board, words) {
   return output;
 }
 
-const findWords = solution_1;
+// one-liner - basically the above, but we don't bother terminating our search when we find a valid word, so we use a set instead of an array
+var solution_2=(b,w,l='length',H=b[l],W=H&&b[0][l],o=new Set(),h=(B,u,r,c,k)=>r<0||r==H||c<0||c==W||B[r][c]!=u[k]?!6:k==u[l]-1?!0:(B[r][c]='',(h(B,u,r+1,c,k+1)||h(B,u,r-1,c,k+1)||h(B,u,r,c+1,k+1)||h(B,u,r,c-1,k+1))?!0:(B[r][c]=u[k],!9)))=>(H?w.map(u=>{B=b.map(x=>x.slice());for(r=0;r<H;++r)for(c=0;c<W;++c)if(h(B,u,r,c,0))o.add(u)}):0,[...o])
+
+const findWords = solution_2;
 
 // const specialTest = (...args) => {
 // };
@@ -105,7 +108,7 @@ input = {
   ],
   words: ['oath', 'pea', 'eat', 'rain'],
 };
-expected = ['eat', 'oath'];
-test(func, input, expected, testNum, lowestTest, highestTest);
+expected = ['eat', 'oath'].sort();
+test(sortedFunc, input, expected, testNum, lowestTest, highestTest);
 
 // INITIALLY FAILED THESE TEST CASES:
