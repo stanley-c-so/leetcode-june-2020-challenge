@@ -46,7 +46,7 @@ function solution_1 (m, n) {
 }
 
 // one-liner - basically the above
-var solution_2=(m,n,t=b=1)=>{[B,S]=m>n?[m,n]:[n,m];for(i=B;i<=B+S-2;++i)t*=i;for(i=1;i<S;++i)b*=i;return t/b}
+var solution_2=(m,n,t=b=1)=>{[B,S]=m>n?[m,n]:[n,m];for(i=B;i<=B+S-2;)t*=i++;for(i=1;i<S;)b*=i++;return t/b}
 
 // thomas luo's one-liner - he fills an array of length `m` with 0 (and then reassigns first element to 1) and then he does the following `n` times: every element in the array (except the first)
 // increases by whatever the previous number is. thus if `m` and `n` are both 5, the array goes from [1,0,0,0,0] -> [1,2,3,4,5] -> [1,3,6,10,15] -> [1,4,10,20,35] -> [1,5,15,35,70] and ultimately
